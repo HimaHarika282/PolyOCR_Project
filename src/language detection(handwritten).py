@@ -70,9 +70,9 @@ def detect_language(text):
 def save_to_json(output_path, data):
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
-    print(f"✅ JSON saved to {output_path}")
+    print(f"JSON saved to {output_path}")
 
-# 🔄 Modified Main function
+#  Modified Main function
 def process_paragraph_image(image_path):
     line_images, boxes = segment_lines(image_path)
     texts = recognize_line_images(line_images)
@@ -98,7 +98,7 @@ def process_paragraph_image(image_path):
 
         
 
-     # 🔤 Detect overall language from all recognized lines
+     #  Detect overall language from all recognized lines
     full_text = " ".join([item["recognized_text"] for item in results]).strip()
     if full_text:
        overall_lang, overall_conf = detect_language(full_text)
@@ -139,7 +139,7 @@ def convert_to_icdar_format(json_path, output_icdar_path):
             icdar_line = f"{x1},{y1},{x2},{y1},{x2},{y2},{x1},{y2},{text}"
             out_file.write(icdar_line + "\n")
 
-    print(f"✅ ICDAR file saved to {output_icdar_path}")
+    print(f" ICDAR file saved to {output_icdar_path}")
 
 # Use it after your OCR pipeline
 json_file = "english_lang_output.json"
