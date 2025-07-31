@@ -67,7 +67,7 @@ for bbox, text, conf in all_results:
 final_results.sort(key=lambda x: min([pt[1] for pt in x[0]]))
 
 # Combine into paragraph-like lines
-print("📝 Final Recognized Text (cleaned):\n")
+print("  Recognized Text :\n")
 line_text = ""
 prev_bottom = 0
 for bbox, text, conf in final_results:
@@ -158,7 +158,7 @@ result = {
 with open("ocr_results_with_overall_language.json", "w", encoding="utf-8") as f:
     json.dump(result, f, ensure_ascii=False, indent=4)
 
-print("✅ JSON saved with overall language as ocr_results_with_overall_language.json")
+print(" JSON saved with overall language as ocr_results_with_overall_language.json")
 
 #  ICDAR Format: res_output_icdar.txt
 
@@ -177,4 +177,4 @@ with open(icdar_filename, "w", encoding="utf-8") as f:
     for line in icdar_lines:
         f.write(line + "\n")
 
-print(f"✅ ICDAR result file saved as {icdar_filename}")
+print(f"ICDAR result file saved as {icdar_filename}")
