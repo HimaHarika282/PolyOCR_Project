@@ -1,0 +1,222 @@
+{
+  "text": " Em novembro de 2016, 0 Ministro da Saúde russo confirmou que todos os indivíduos infectados poderiam ser testados em março; assim como seus familiares e amigos, eles podem fazer teste clínico cirúrgica do hospital da cidade em que são uma unidade em anunciado no mesmo dia colocados, caso necessario Também foi que 0 Ministério do Trabalho revelou que as autoridades russas estao trabalhando em conjunto visando reduzir 0 numero de mortes causadas pelas epidemias. Agencia A agencia informou que Vigilancia Sanitaria Russa (Anvisa) comecou a Nacional de monitorar a pandemia através de máscaras faciais nos hospitais .",
+  "language": "Portuguese",
+  "boxes": [
+    {
+      "text": "Em novembro de 2016, 0 Ministro da Saúde russo confirmou que",
+      "bounding_box": [
+        16,
+        22,
+        636,
+        50
+      ],
+      "language": "pt",
+      "lang_confidence": -116.2307,
+      "ocr_confidence": 0.7397
+    },
+    {
+      "text": "todos os indivíduos infectados poderiam ser testados em março;",
+      "bounding_box": [
+        14,
+        46,
+        634,
+        74
+      ],
+      "language": "pt",
+      "lang_confidence": -312.064,
+      "ocr_confidence": 0.7261
+    },
+    {
+      "text": "assim como seus familiares e amigos, eles podem fazer teste clínico",
+      "bounding_box": [
+        16,
+        71,
+        662,
+        100
+      ],
+      "language": "pt",
+      "lang_confidence": -223.8529,
+      "ocr_confidence": 0.7012
+    },
+    {
+      "text": "cirúrgica do hospital da cidade em que são",
+      "bounding_box": [
+        175,
+        96,
+        590,
+        127
+      ],
+      "language": "pt",
+      "lang_confidence": -171.8435,
+      "ocr_confidence": 0.8946
+    },
+    {
+      "text": "uma unidade",
+      "bounding_box": [
+        52,
+        98,
+        178,
+        122
+      ],
+      "language": "pt",
+      "lang_confidence": -40.6844,
+      "ocr_confidence": 0.8385
+    },
+    {
+      "text": "em",
+      "bounding_box": [
+        17,
+        105,
+        47,
+        121
+      ],
+      "language": "en",
+      "lang_confidence": 9.0618,
+      "ocr_confidence": 0.9988
+    },
+    {
+      "text": "anunciado no mesmo dia",
+      "bounding_box": [
+        395,
+        120,
+        636,
+        151
+      ],
+      "language": "pt",
+      "lang_confidence": -88.7595,
+      "ocr_confidence": 0.9607
+    },
+    {
+      "text": "colocados, caso necessario",
+      "bounding_box": [
+        14,
+        121,
+        274,
+        148
+      ],
+      "language": "es",
+      "lang_confidence": -60.0534,
+      "ocr_confidence": 0.9471
+    },
+    {
+      "text": "Também foi",
+      "bounding_box": [
+        281,
+        125,
+        397,
+        145
+      ],
+      "language": "pt",
+      "lang_confidence": -44.1487,
+      "ocr_confidence": 0.999
+    },
+    {
+      "text": "que 0 Ministério do Trabalho revelou que as autoridades russas",
+      "bounding_box": [
+        14,
+        148,
+        628,
+        174
+      ],
+      "language": "pt",
+      "lang_confidence": -218.2974,
+      "ocr_confidence": 0.8234
+    },
+    {
+      "text": "estao trabalhando em conjunto visando reduzir 0 numero de mortes",
+      "bounding_box": [
+        14,
+        172,
+        670,
+        199
+      ],
+      "language": "pt",
+      "lang_confidence": -228.9344,
+      "ocr_confidence": 0.8666
+    },
+    {
+      "text": "causadas pelas epidemias.",
+      "bounding_box": [
+        16,
+        196,
+        266,
+        224
+      ],
+      "language": "pt",
+      "lang_confidence": -81.22,
+      "ocr_confidence": 0.8976
+    },
+    {
+      "text": "Agencia",
+      "bounding_box": [
+        518,
+        198,
+        598,
+        224
+      ],
+      "language": "es",
+      "lang_confidence": -10.1495,
+      "ocr_confidence": 1.0
+    },
+    {
+      "text": "A agencia informou",
+      "bounding_box": [
+        272,
+        198,
+        460,
+        224
+      ],
+      "language": "es",
+      "lang_confidence": -17.1199,
+      "ocr_confidence": 0.9993
+    },
+    {
+      "text": "que",
+      "bounding_box": [
+        458,
+        202,
+        499,
+        223
+      ],
+      "language": "en",
+      "lang_confidence": 9.0618,
+      "ocr_confidence": 1.0
+    },
+    {
+      "text": "Vigilancia Sanitaria Russa (Anvisa) comecou a",
+      "bounding_box": [
+        133,
+        221,
+        578,
+        252
+      ],
+      "language": "it",
+      "lang_confidence": -41.0459,
+      "ocr_confidence": 0.8903
+    },
+    {
+      "text": "Nacional de",
+      "bounding_box": [
+        17,
+        225,
+        133,
+        245
+      ],
+      "language": "es",
+      "lang_confidence": -42.1503,
+      "ocr_confidence": 0.9631
+    },
+    {
+      "text": "monitorar a pandemia através de máscaras faciais nos hospitais .",
+      "bounding_box": [
+        16,
+        246,
+        630,
+        274
+      ],
+      "language": "pt",
+      "lang_confidence": -218.0261,
+      "ocr_confidence": 0.8842
+    }
+  ]
+}

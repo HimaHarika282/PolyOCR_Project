@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PolyOCR - Detect Text</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='frontend_files/base.css') }}">
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">Switch to Dark Mode</button>
+
+  <div class="start-container" id="startContainer">
+    <h1>PolyOCR - Multilingual Text Detection</h1>
+    <p>Select the type of text you want to detect:</p>
+    <div class="type-buttons">
+      <button class="type-button" onclick="selectType('Printed Text')">Printed Text</button>
+      <button class="type-button" onclick="selectType('Handwritten Text')">Handwritten Text</button>
+    </div>
+  </div>
+
+  <div class="container" id="mainContainer">
+    <button class="back-button" onclick="goBack()">Back</button>
+    <h1>PolyOCR - Multilingual Text Detection</h1>
+    <h2 id="subheading"></h2>
+    <div class="content">
+      <div class="upload-section">
+        <input type="file" id="imageInput" accept="image/*">
+        <div id="imagePreview"></div>
+        <p id="statusMessage" class="status-message"></p>
+        <button class="detect-button" id="detectTextButton" style="display: none;">Detect Text</button>
+      </div>
+      <div class="text-section" id="textSection">
+        <h3>Detected Text:</h3>
+        <p id="detectedText"></p>
+        <p id="detectedLanguage"></p>
+        <div class="actions">
+          <button class="action-btn" onclick="copyText()">Copy Text</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <script src="{{ url_for('static', filename='frontend_files/base.js') }}"></script>
+
+</body>
+</html>
