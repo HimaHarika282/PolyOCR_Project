@@ -1,1 +1,6 @@
-
+The jupyter notebooks in this folder consists the code for the text detection of multilingual printed and handwritten english text.
+In order to use these and check the code, download these notebooks in your system and run the code in your system's jupyter notebook.
+For testing the images, either put the image in the same notebook as of code or download the image to your system's files and provide the local path of your image to the 
+"image path" in code and run the cell.
+For handwritten text, please download the following files in your local system, keep them in the same notebook as your code and provide path to them in the "local path"
+of the code.
