@@ -67,3 +67,29 @@ def process_paragraph_image(image_path):
       for cnt in contours:
         x, y, w, h = cv2.boundingRect(cnt)
         if w > 20 and h > 20:
+            line_crop = image[y:y+h, x:x+w]
+          if line_crop.ndim == 2:
+              line_crop = cv2.cvtColor(line_crop, cv2.COLOR_GRAY2RGB)
+          elif line_crop.shape[2] == 1:
+              line_crop = cv2.merge([line_crop]*3)
+
+          line_pil = Image.fromarray(line_crop)
+          lines.append(((x, y, w, h), line_pil))
+
+    # Sort lines top-to-bottom, then left-to-right
+      lines_sorted = sorted(lines, key=lambda b: (b[0][1], b[0][0]))  
+
+    # Run OCR on sorted lines
+      for i, (box, line_image) in enumerate(lines_sorted):
+        pixel_values = processor(images=line_image, return_tensors="pt").pixel_values.to(device)
+        generated_ids = model.generate(pixel_values)
+        text = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
+
+        print(f"Line {i+1}: {text}")
+        print(f"Bounding Box: x={box[0]}, y={box[1]}, w={box[2]}, h={box[3]}")
+        print("")
+    
+
+
+image_path = "h2.jpeg"
+process_paragraph_image(image_path)
