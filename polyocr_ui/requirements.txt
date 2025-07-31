@@ -1,0 +1,14 @@
+flask
+easyocr
+opencv-python
+langid
+transformers
+torchvision
+numpy
+pillow
+os
+werkzeug.utils
+flask_cors
+cv2
+matplotlib.pyplot
+torch
