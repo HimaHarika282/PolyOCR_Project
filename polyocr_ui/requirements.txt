@@ -12,3 +12,4 @@ flask_cors
 cv2
 matplotlib.pyplot
 torch
+Download all the files from the folder the link provided below in your system:
