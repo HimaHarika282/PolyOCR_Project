@@ -1,3 +1,16 @@
+For printed multilingual:
+OpenCV
+easyocr
+numpy
+matplotlib
+
+For handwritten english:
+OpenCV
+transformers: TrOCRProcessor, VisionEncoderDecoderModel
+pillow
+torch
+numpy
+
 The jupyter notebooks in this folder consists the code for the text detection of multilingual printed and handwritten english text.
 In order to use these and check the code, download these notebooks in your system and run the code in your system's jupyter notebook.
 For testing the images, either put the image in the same notebook as of code or download the image to your system's files and provide the local path of your image to the 
