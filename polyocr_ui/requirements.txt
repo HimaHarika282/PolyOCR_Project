@@ -13,3 +13,4 @@ cv2
 matplotlib.pyplot
 torch
 Download all the files from the folder the link provided below in your system:
+https://drive.google.com/drive/folders/1OiwAmelCxbNQ34oOwwO_-wB7Uta7pzZj?usp=drive_link
