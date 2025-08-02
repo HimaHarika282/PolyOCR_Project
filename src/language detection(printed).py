@@ -3,6 +3,7 @@ import easyocr
 import numpy as np
 import matplotlib.pyplot as plt
 import json
+import math
 import langid
 langid.set_languages(['hi', 'ar', 'en', 'fr', 'es', 'nl', 'de', 'it', 'pt', 'sv'])
 
@@ -108,17 +109,23 @@ full_text = ""
 for (bbox, text, confidence) in final_results:
     full_text += text.strip() + " "  # accumulate all text lines
 
-    # Line-wise processing (same as before)
+    # Line-wise processing
     if len(text.strip()) < 2:
         lang_code = "un"
         lang_score = 0.0
     else:
         try:
-            lang_code, _ = langid.classify(text)
             ranked = langid.rank(text)
-            lang_score = ranked[0][1] if ranked else 0.0
+            top_lang, log_prob = ranked[0]
+            lang_code = top_lang
+             # Convert log-probability to normal confidence (0–1)
+            lang_score = math.exp(log_prob)
+
+            # Safety clamp: if result is extremely small, set to 0
             if lang_score < 0:
                 lang_score = 0.0
+            else:
+                lang_score = round(lang_score, 8)    
         except Exception:
             lang_code = "un"
             lang_score = 0.0
@@ -133,16 +140,24 @@ for (bbox, text, confidence) in final_results:
         "text": text,
         "bounding_box": [x, y, x + w, y + h],
         "language": lang_code,
-        "lang_confidence": round(lang_score, 4),
+        "lang_confidence": round(lang_score, 8),
         "ocr_confidence": round(confidence, 4)
     })
 
 # Step 2: Detect overall language
 try:
-    overall_lang, _ = langid.classify(full_text)
-    overall_score = langid.rank(full_text)[0][1]
+    ranked = langid.rank(full_text)
+    overall_lang, log_prob = ranked[0]
+    
+    # Convert log probability to normal probability
+    overall_score = math.exp(log_prob)
+
+    # Optional: clamp very low values to 0.0
     if overall_score < 0:
         overall_score = 0.0
+    else:
+        overall_score = round(overall_score, 8)
+
 except Exception:
     overall_lang = "un"
     overall_score = 0.0
@@ -150,7 +165,7 @@ except Exception:
 # Step 3: Add overall language info at the end
 result = {
     "overall_language": overall_lang,
-    "overall_lang_confidence": round(overall_score, 4),
+    "overall_lang_confidence": round(overall_score, 8),
     "lines": output_data
 }
 
@@ -178,3 +193,4 @@ with open(icdar_filename, "w", encoding="utf-8") as f:
         f.write(line + "\n")
 
 print(f"ICDAR result file saved as {icdar_filename}")
+
