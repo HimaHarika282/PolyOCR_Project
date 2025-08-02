@@ -1,7 +1,4 @@
-# PolyOCR_Project
-HEY EVERYONE! This is our polyocr project. I have created this repo so thatwe can work on integration of our individual parts
 
-UI PART:
 # PolyOCR – Multilingual Printed & Handwritten OCR Web App
 
 **PolyOCR** is a web-based Optical Character Recognition (OCR) system capable of detecting and extracting printed and handwritten text from images in multiple languages. It uses EasyOCR for printed text and Microsoft's TrOCR for handwritten text, supporting languages like Hindi, Arabic, Spanish, French, Dutch, Portuguese, Swedish, German and English.
@@ -15,6 +12,35 @@ UI PART:
 🔗 Live Demo (Hugging Face Space): [https://huggingface.co/spaces/HimaHarika2827/polyocr](https://huggingface.co/spaces/HimaHarika2827/polyocr)
 
 ---
+
+###  OCR Logic: EasyOCR & TrOCR
+
+Our system uses two powerful OCR engines for text recognition:
+
+####  EasyOCR – For Printed Text
+- EasyOCR is a deep learning-based OCR library that supports over 80 languages.
+- It uses a combination of **CRAFT** for text detection and a **CRNN** for text recognition.
+- In our project, EasyOCR is used for detecting and recognizing **printed text** from images.
+- It is lightweight, fast, and easy to integrate — making it ideal for real-time applications.
+- For using the code, please go to the notebooks folder of this repository and read the requirements.txt file.
+
+####  TrOCR – For Handwritten Text
+- TrOCR (Transformer-based OCR) is a model by Microsoft based on **Vision Transformer (ViT)** + **Text Decoder Transformer**.
+- We use the pretrained `trocr-base-handwritten` model for **handwritten text recognition**.
+- TrOCR is more accurate than most traditional OCRs for handwriting, especially in variable writing styles and cursive scripts.
+- No training was needed — the pretrained model gave excellent performance on handwritten notes/images.
+- For using the code, please go to the notebooks folder of this repository and read the requirements.txt file.
+
+
+####  Language Detection
+- After extracting text, we also use a language detection component to identify which language(s) are present in the recognized content.
+- This helps in visualizing and filtering multilingual results, especially when processing mixed-language documents.
+
+The decision of using EasyOCR for printed and TrOCR for handwritten content was based on their respective strengths and performance. Compared to large vision-language models (VLMs), these models are lightweight, faster to load, and easier to deploy in our pipeline.
+
+---
+
+
 
 ##  Features
 
