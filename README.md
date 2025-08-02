@@ -35,7 +35,14 @@ Our system uses two powerful OCR engines for text recognition:
 ####  Language Detection
 - After extracting text, we also use a language detection component to identify which language(s) are present in the recognized content.
 - This helps in visualizing and filtering multilingual results, especially when processing mixed-language documents.
+####  JSON Conversion
+- The OCR results are saved in a JSON file.
+-  This includes detected text, bounding boxes, OCR confidence, and language details (both line-wise and overall).
+-  JSON is used for its structured format, ease of parsing, and compatibility with other tools or APIs.
 
+#### ICDAR Conversion:
+- The file res_output_icdar.txt contains results in ICDAR standard format, listing bounding box coordinates and corresponding text.
+- This is useful for benchmarking the system using official ICDAR evaluation tools and ensures compatibility with research-standard datasets.
 The decision of using EasyOCR for printed and TrOCR for handwritten content was based on their respective strengths and performance. Compared to large vision-language models (VLMs), these models are lightweight, faster to load, and easier to deploy in our pipeline.
 
 ---
