@@ -11,7 +11,7 @@ import json
 import os
 
 
-local_path = ".trocr_handwritten"
+local_path = "./trocr_handwritten"
 
 
 # Load pre-trained TrOCR model
@@ -59,12 +59,15 @@ def recognize_line_images(line_images):
     return results  
 
 def detect_language(text):
-    lang, log_prob = langid.classify(text)
     try:
-        confidence = math.exp(log_prob)  # Convert log probability to [0, 1]
-    except OverflowError:
-        confidence = 0.0
-    return lang, round(confidence, 4)
+        lang, log_prob = langid.classify(text)
+        print(f"[langid] Detected: {lang}, Log Probability: {log_prob:.4f}")
+        confidence = math.exp(log_prob)  # Convert from log scale
+        confidence = round(confidence, 4)
+    except (OverflowError, ValueError) as e:
+        print(f"[langid error] for text: '{text}' -> {e}")
+        lang, confidence = "un", 0.0
+    return lang, confidence
 
 
 def save_to_json(output_path, data):
@@ -114,6 +117,9 @@ def process_paragraph_image(image_path):
         },
         "lines": results
     }
+    print(" Full Text Used for Overall Language Detection:")
+    print(full_text)
+    print(f" Overall Language: {overall_lang} (Confidence: {overall_conf:.4f})\n")
 
     # Save result to JSON
     base = os.path.splitext(os.path.basename(image_path))[0]
@@ -145,3 +151,4 @@ def convert_to_icdar_format(json_path, output_icdar_path):
 json_file = "english_lang_output.json"
 icdar_file = "english_icdar_output.txt"
 convert_to_icdar_format(json_file, icdar_file)
+
