@@ -1,188 +1,132 @@
-
 # PolyOCR – Multilingual Printed & Handwritten OCR Web App
 
-**PolyOCR** is a web-based Optical Character Recognition (OCR) system capable of detecting and extracting printed and handwritten text from images in multiple languages. It uses EasyOCR for printed text and Microsoft's TrOCR for handwritten text, supporting languages like Hindi, Arabic, Spanish, French, Dutch, Portuguese, Swedish, German and English.
+## Overview
 
->  This repository contains the **Web UI and frontend/backend integration** component of the PolyOCR project.
+PolyOCR is a multilingual OCR web application that extracts both printed and handwritten text from images using a hybrid pipeline powered by EasyOCR and Microsoft TrOCR.
 
----
+The system supports 8+ languages and provides structured, clean text output along with bounding box visualization — making it useful for digitizing documents, notes, and multilingual content.
 
-##  Deployed Application
-
-🔗 Live Demo (Hugging Face Space): [https://huggingface.co/spaces/HimaHarika2827/polyocr](https://huggingface.co/spaces/HimaHarika2827/polyocr)
+This repository focuses on the full-stack web interface and system integration layer of the project.
 
 ---
 
-###  OCR Logic: EasyOCR & TrOCR
+## My Contributions
 
-Our system uses two powerful OCR engines for text recognition:
-
-####  EasyOCR – For Printed Text
-- EasyOCR is a deep learning-based OCR library that supports over 80 languages.
-- It uses a combination of **CRAFT** for text detection and a **CRNN** for text recognition.
-- In our project, EasyOCR is used for detecting and recognizing **printed text** from images.
-- It is lightweight, fast, and easy to integrate — making it ideal for real-time applications.
-- For using the code, please go to the notebooks folder of this repository and read the requirements.txt file.
-
-####  TrOCR – For Handwritten Text
-- TrOCR (Transformer-based OCR) is a model by Microsoft based on **Vision Transformer (ViT)** + **Text Decoder Transformer**.
-- We use the pretrained `trocr-base-handwritten` model for **handwritten text recognition**.
-- TrOCR is more accurate than most traditional OCRs for handwriting, especially in variable writing styles and cursive scripts.
-- No training was needed — the pretrained model gave excellent performance on handwritten notes/images.
-- For using the code, please go to the notebooks folder of this repository and read the requirements.txt file.
-
-
-####  Language Detection
-- After extracting text, we also use a language detection component to identify which language(s) are present in the recognized content.
-- This helps in visualizing and filtering multilingual results, especially when processing mixed-language documents.
-####  JSON Conversion
-- The OCR results are saved in a JSON file.
--  This includes detected text, bounding boxes, OCR confidence, and language details (both line-wise and overall).
--  JSON is used for its structured format, ease of parsing, and compatibility with other tools or APIs.
-
-#### ICDAR Conversion:
-- The file res_output_icdar.txt contains results in ICDAR standard format, listing bounding box coordinates and corresponding text.
-- This is useful for benchmarking the system using official ICDAR evaluation tools and ensures compatibility with research-standard datasets.
-The decision of using EasyOCR for printed and TrOCR for handwritten content was based on their respective strengths and performance. Compared to large vision-language models (VLMs), these models are lightweight, faster to load, and easier to deploy in our pipeline.
+* Designed and implemented the complete frontend using Flask, HTML, CSS, and JavaScript
+* Integrated EasyOCR and TrOCR outputs into the web interface for seamless user interaction
+* Built image upload, preview, and result visualization pipeline
+* Implemented error handling for incorrect OCR mode selection and invalid inputs
+* Processed and formatted OCR outputs into clean, readable text
 
 ---
 
+## System Architecture
 
-
-##  Features
-
--  Upload images with **printed or handwritten** text.
--  Supports **multiple languages**.
--  Smart backend detection (if implemented) to warn user when the wrong OCR type is selected.
--  Output displays:
-  - Clean extracted text
-  - Detected language
-  - Annotated image with bounding boxes
--  Light/Dark mode toggle
--  Copy extracted text to clipboard
--  Displays friendly error messages for unsupported files or missing text
+User Upload → Flask Backend → OCR Processing (EasyOCR / TrOCR)
+→ Post-processing → Language Detection → UI Display
 
 ---
 
-##  Tech stacks used
+## Features
+
+* Multilingual OCR (8+ languages including Hindi, Arabic, Spanish, French, German, etc.)
+* Printed + Handwritten text recognition
+* Structured paragraph-style text output
+* Bounding box visualization on detected text
+* Language detection using FastText
+* Error handling for incorrect OCR selection
+* Light/Dark mode toggle
+* Copy extracted text to clipboard
+
+---
+
+## OCR Engine
+
+* **EasyOCR**: Used for printed text detection and recognition
+* **TrOCR**: Transformer-based model used for handwritten text recognition
+
+---
+
+## Demo
+
+### Input Image
+
+![Input](path/to/input_image.png)
+
+### Output (Detected Text + Bounding Boxes)
+
+![Output](path/to/output_image.png)
+
+ Live Demo: https://huggingface.co/spaces/HimaHarika2827/polyocr
+
+---
+
+## Tech Stack
 
 ### Frontend
-- HTML5, CSS3
-- JavaScript (vanilla)
-- Responsive layout with clean styling
+
+* HTML5, CSS3
+* JavaScript
 
 ### Backend
-- Python (Flask) 
-- EasyOCR for Printed Text
-- TrOCR for Handwritten Text (Transformer-based OCR)
-- FastText for language detection
-- OpenCV & PIL for image processing
+
+* Python (Flask)
+* EasyOCR (Printed OCR)
+* TrOCR (Handwritten OCR)
+* FastText (Language Detection)
+* OpenCV & PIL (Image Processing)
 
 ---
 
-##  Folder Structure
-  polyocr/
-  ├── static/
-  │ ├── frontend_files/
-  │ │ └── base.css
-  │ │ └── base.js
-  │ ├── uploads/
-  | | |__uploaded_image.png  # Uploaded images
-  │ └── annotated/ 
-  | | |__ annotated_output.png # Images with bounding boxes
-  | |__ json_output/
-  |   |__ output.json #json output with text, confidence, language 
-  ├── templates/
-  │ └── base.html # Main frontend page
-  ├── web.py # Flask backend
-  ├── ocr_processing.py # Printed OCR logic (EasyOCR)
-  ├── handwritten_ocr.py # Handwritten OCR logic (TrOCR)
-  └── README.md # This file
+## Folder Structure
 
-### For faster results
-##Run Faster Using Google Colab (GPU)
-Both printed (EasyOCR) and handwritten (TrOCR) processing can be slow on CPU.
-For faster results, run the OCR backend using Google Colab with GPU, and connect it to the web UI using ngrok or similar.
+```
+polyocr/
+├── static/
+│   ├── frontend_files/
+│   ├── uploads/
+│   ├── annotated/
+│   └── json_output/
+├── templates/
+│   └── base.html
+├── web.py
+├── ocr_processing.py
+├── handwritten_ocr.py
+└── README.md
+```
 
+---
 
- 
+## Installation
 
-#Installation
-
-### Clone the Repository
 ```bash
-  git clone https://github.com/Bhavika-17/PolyOCR_Project.git
-  cd PolyOCR_Project/polyocr_ui
-  ```
-  
-  #Create a Virtual Environment (Optional but recommended)
-  ``` bash
-  python -m venv venv
-  source venv/bin/activate   # On Windows: venv\Scripts\activate
-  ```
+git clone https://github.com/YOUR_USERNAME/PolyOCR_Project.git
+cd PolyOCR_Project/polyocr_ui
 
-  #Install Dependencies
-  ```bash
-  pip install -r requirements.txt
-  ```
-  Note: In the requirements file there is link to download files required for TrOCR. Make sure      to keep them in a folder named ./trocr_model/ after downloading
+python -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
 
-  #Start the Flask Web App
-  ```bash
-  python web.py
-   ```
+pip install -r requirements.txt
+python web.py
+```
 
-  #Access in Browser
-  Visit: http://127.0.0.1:5000/
-  **You will see an upload page where you can select an image and choose either Printed OCR or         Handwritten OCR.
-  
-  #Example:
-  * Choose the OCR type.
+Visit: http://127.0.0.1:5000/
 
-  * Upload an image containing text of your choosen ocr type.(note: This is must for better         results because models are different for both types.
-  
-  * Click "Detect Text".
-  
-   * The app displays:
-        Detected text:
-        Language:
+---
 
-### Colab Setup Instructions (for both OCRs):
-  1. Create a new Colab notebook and enable GPU:
-     Runtime → Change runtime type → GPU
-  
-  2. Upload:
-  ocr_processing.py
-  handwritten_ocr.py
-  web.py  
-  Any required models (like trocr_model/)
-  Your HTML/CSS/JS files if needed
-  
-  3.Install dependencies:
-  ```bash
-  !pip install flask easyocr transformers fasttext opencv-python
-   ```
-  4.Start Flask app in Colab cell:
-  ```python
-  !python web.py
-   ```
-  5.Expose it via ngrok:
-  ```python
-  !pip install pyngrok
-  from pyngrok import ngrok
-  public_url = ngrok.connect(5000)
-  print(public_url)
-  ```
- 6.Update your frontend to use the public_url for API calls if needed.
+## Running with GPU (Optional)
 
-📝 Now your web UI will talk to a GPU-accelerated backend running in Colab.
+For faster OCR processing, run the backend on Google Colab with GPU and connect it to the frontend using ngrok.
 
-** Notes
- Hugging Face Spaces may run on CPU and can be slow. Use Colab+GPU for actual usage/testing.
- 
- Printed OCR (ocr_processing.py) and handwritten OCR (handwritten_ocr.py) both support GPU       processing in Colab.
+---
 
-#License
+## Notes
+
+* Hugging Face deployment may run on CPU and can be slow
+* GPU execution significantly improves performance for both EasyOCR and TrOCR
+
+---
+
+## License
+
 This project is licensed under the MIT License.
-
-
